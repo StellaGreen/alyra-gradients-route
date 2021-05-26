@@ -11,7 +11,7 @@ const Gradient = ({ colorStart, colorEnd, name, tags }) => {
         <GradientTitle>{name}</GradientTitle>
         <GradientCode colorStart={colorStart} colorEnd={colorEnd} />
         <GradientTags tags={tags} />
-        <a class="btn btn-outline-dark w-100" href="/gradient/5">Plein écran</a>
+        <a className="btn btn-outline-dark w-100" href="/gradient/5">Plein écran</a>
       </div>
     </li>
   )
