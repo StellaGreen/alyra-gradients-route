@@ -1,8 +1,9 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { gradients as list } from "../gradients"
 import { ReactComponent as SvgToggle } from "bootstrap-icons/icons/arrow-clockwise.svg"
 import { ReactComponent as Next } from "bootstrap-icons/icons/arrow-right.svg"
 import { ReactComponent as Prev } from "bootstrap-icons/icons/arrow-left.svg"
+import { useGradients } from "../context/GratientsContext"
 
 const GradientsHeader = (props) => {
   const { children } = props
@@ -24,6 +25,17 @@ const GradientsHeader = (props) => {
   const style = {
     backgroundImage: `linear-gradient(to right, ${list[randomGradient].start}, ${list[randomGradient].end})`
   }
+
+  // loading true = background-color: black / loading false =
+  const {loading } = useGradients()
+  const {gradients} = useGradients()
+
+  useEffect(() => {
+    if(loading === false) {
+      console.log(gradients)
+    }
+  }, [loading, gradients])
+
   return (
     <header className="text-center bg-dark text-white py-5 mb-5" style={style}>
       {children}
