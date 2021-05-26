@@ -25,7 +25,7 @@ const {id} = useParams()
         <div className="m-auto text-center">
           <h1 className="text-white display-1">{gradients[id-1]?.name}</h1>
           <div className="bg-white shadow p-2 rounded">
-            <code>{{backgroundImage: `linear-gradient(to right, ${gradients[id-1].start}, ${gradients[id-1].end})`}};</code>
+            <code>;</code>
           </div>
         </div>
       </div>
