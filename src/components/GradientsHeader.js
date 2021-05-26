@@ -24,7 +24,7 @@ const GradientsHeader = (props) => {
   }
 
   const style = {
-    backgroundImage: `linear-gradient(to right, ${list[randomGradient]?.start ?? "rgb(33, 37, 41)"}, ${list[randomGradient]?.end ?? "rgb(33, 37, 41)"})`
+    backgroundImage: `linear-gradient(to right, ${list[randomGradient]?.start}, ${list[randomGradient]?.end})`
   }
 
   // loading true = background-color: black / loading false =
@@ -40,7 +40,7 @@ const GradientsHeader = (props) => {
   }, [loading, list])
 
   return (
-    <header className="text-center bg-dark text-white py-5 mb-5" style={style}>
+    <header className="text-center bg-dark text-white py-5 mb-5" style={list.length > 0 ? style : {backgroundColor: 'black'}}>
       {children}
       <button
         aria-label="Clicker pour afficher le dégradé précédant"
