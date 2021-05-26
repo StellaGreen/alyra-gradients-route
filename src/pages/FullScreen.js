@@ -24,12 +24,12 @@ const handlClickPrev = () =>{
           <li className="nav-item">
             <Link className="btn btn-dark text-white nav-link me-2" to="/">Tous</Link>
           </li>
-          <li className="nav-item">
-            <Link className="btn btn-dark text-white nav-link me-2" to={`/gradient/${Number(countId)-1}`} onClick={handlClickPrev} disabled={Number(countId) <= 1}>Précédent</Link>
-          </li>
-          <li className="nav-item">
-            <Link className="btn btn-dark text-white nav-link" to={`/gradient/${Number(countId)+1}`} onClick={handlClickNext} disabled={Number(countId) >= gradients.length}>Suivant</Link>
-          </li>
+          {countId > 1 && <li className="nav-item">
+            <Link className="btn btn-dark text-white nav-link me-2" to={`/gradient/${Number(countId) - 1}`} onClick={handlClickPrev}>Précédent</Link>
+          </li>}
+          {countId < gradients.length && <li className="nav-item">
+            <Link className="btn btn-dark text-white nav-link" to={`/gradient/${Number(countId) + 1}`} onClick={handlClickNext}>Suivant</Link>
+          </li>}
         </nav>     
         <div className="m-auto text-center">
           <h1 className="text-white display-1">{gradients[countId-1]?.name}</h1>
