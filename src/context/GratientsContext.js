@@ -1,11 +1,11 @@
-import {createContext, useContext, useReducer} from "react"
+import {createContext, useContext, useReducer, useEffect} from "react"
 import {gradientsReducer} from "../reducers/gradientsReducer"
 
 export const GradientsContext = createContext()
 
 export const GradientsContextProvider = ({children}) => {
   const [state, gradientsDispatch] = useReducer(gradientsReducer, {
-    loading: false,
+    loading: true,
     error: "",
     gradients: []
   })
@@ -13,7 +13,7 @@ export const GradientsContextProvider = ({children}) => {
 
   useEffect(()=>{
   //login true
-  console.log(`${process.env.REACT_APP_API_URL}/gradients`)
+  gradientsDispatch({type: "FETCH_INIT"})
   fetch(`${process.env.REACT_APP_API_URL}/gradients`)
   .then(response => {
     if (!response.ok) {
@@ -23,17 +23,12 @@ export const GradientsContextProvider = ({children}) => {
   })
   .then(data => {
     // data
-    console.log('data')
-    console.log(data)
+    gradientsDispatch({type: "FETCH_SUCCESS", payload: data})
   })
   .catch(e=> {
     //error
-    console.log('error')
     console.log(e.message)
-  })
-  .finally(() =>{
-    console.log('finally')
-    // login false
+    gradientsDispatch({type: "FETCH_FAILURE", payload: e.message})
   })
 },[])
 
