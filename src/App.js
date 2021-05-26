@@ -17,6 +17,7 @@ useEffect(()=>{
   })
   .then(data => {
     // data
+    console.log('data')
     console.log(data)
   })
   .catch(error => {
