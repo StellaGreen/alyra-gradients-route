@@ -2,8 +2,33 @@ import Gradients from "./components/Gradients"
 import GradientsHeader from "./components/GradientsHeader"
 import Footer from "./components/Footer"
 import {FilterContextProvider} from "./context/FilterContext"
+import { useEffect } from "react"
 
 function App() {
+
+useEffect(()=>{
+  //login true
+  fetch(`${process.env.REACT_API_URL}/gradients`)
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`something wrong with request: ${response.status}`)
+    }
+    return response.json()
+  })
+  .then(data => {
+    // data
+    console.log(data)
+  })
+  .catch(error => {
+    //error
+    console.log(error.message)
+  })
+  .finally(() =>{
+    console.log('finally')
+    // login false
+  })
+})
+
   return (
     <div className="App min-vh-100 d-flex flex-column">
       <GradientsHeader>
