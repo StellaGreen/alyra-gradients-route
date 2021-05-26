@@ -1,9 +1,11 @@
 import { useFilter } from "../context/FilterContext"
 import Gradient from "./Gradient"
-import { gradients } from "../gradients"
+//import { gradients } from "../gradients"
+import {useGradients} from "../context/GratientsContext"
 
 const GradientsList = () => {
   const {filter} = useFilter()
+  const {gradients} = useGradients()
   
   const list = gradients.filter((el) => {
     if (filter === "all") {
@@ -14,10 +16,10 @@ const GradientsList = () => {
   return (
     <ul className="row list-unstyled">
       {list.map((el) => {
-        const { name, start, end, tags = [] } = el
+        const { name, start, end, tags = [], id } = el
         return (
           <Gradient
-            key={name}
+            key={id}
             colorStart={start}
             colorEnd={end}
             name={name}

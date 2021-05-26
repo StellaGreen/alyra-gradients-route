@@ -1,7 +1,25 @@
-import {createContext, useContext, useReducer, useEffect} from "react"
+import {createContext, useContext, useReducer, useEffect, useState} from "react"
 import {gradientsReducer} from "../reducers/gradientsReducer"
 
 export const GradientsContext = createContext()
+
+function allTags(list) {
+  /* retourner la liste des tags uniques */
+  let listTotal = []
+  for (let element of list) {
+    if ("tags" in element) {
+      listTotal = listTotal.concat(element.tags)
+    }
+  }
+  const listTagsUnique = []
+  listTotal.forEach((el) => {
+    if (!listTagsUnique.includes(el)) {
+      //listTagsUnique = listTagsUnique.concat([el])
+      listTagsUnique.push(el)
+    }
+  })
+  return listTagsUnique
+}
 
 export const GradientsContextProvider = ({children}) => {
   const [state, gradientsDispatch] = useReducer(gradientsReducer, {
@@ -9,7 +27,9 @@ export const GradientsContextProvider = ({children}) => {
     error: "",
     gradients: []
   })
+
   const {loading, error, gradients} = state
+  const [uniqueTags, setUniqueTags] = useState([])
 
   useEffect(()=>{
   //login true
@@ -32,9 +52,12 @@ export const GradientsContextProvider = ({children}) => {
   })
 },[])
 
-
+  useEffect(() => {
+    setUniqueTags(allTags(gradients))
+  }, [gradients])
+  
   return (
-    <GradientsContext.Provider value={{loading, error, gradients, gradientsDispatch}}>
+    <GradientsContext.Provider value={{loading, error, gradients, gradientsDispatch, uniqueTags}}>
       {children}
     </GradientsContext.Provider>
   )
@@ -47,4 +70,3 @@ export const useGradients = () => {
   }
   return context
 }
-
