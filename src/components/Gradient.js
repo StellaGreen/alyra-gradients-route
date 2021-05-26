@@ -2,6 +2,7 @@ import GradientTitle from "./GradientTitle"
 import GradientPill from "./GradientPill"
 import GradientCode from "./GradientCode"
 import GradientTags from "./GradientTags"
+import {Link} from "react-router-dom"
 
 
 const Gradient = ({ colorStart, colorEnd, name, tags,id }) => {
@@ -12,7 +13,7 @@ const Gradient = ({ colorStart, colorEnd, name, tags,id }) => {
         <GradientTitle>{name}</GradientTitle>
         <GradientCode colorStart={colorStart} colorEnd={colorEnd} />
         <GradientTags tags={tags} />
-            <a className="btn btn-outline-dark w-100" href={`/gradient/${id}`}>Plein écran</a>
+            <Link className="btn btn-outline-dark w-100" to={`/gradient/${id}`}>Plein écran</Link>
       </div>
     </li>
   )

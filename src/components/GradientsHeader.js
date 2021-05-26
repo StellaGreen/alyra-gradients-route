@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react"
+import { useState } from "react"
 //import { gradients as list } from "../gradients"
 import { ReactComponent as SvgToggle } from "bootstrap-icons/icons/arrow-clockwise.svg"
 import { ReactComponent as Next } from "bootstrap-icons/icons/arrow-right.svg"
@@ -28,17 +28,6 @@ const GradientsHeader = (props) => {
   }
 
   // loading true = background-color: black / loading false =
-  const {loading} = useGradients()
-  
-
-  //console.log(uniqueTags)
-
-  useEffect(() => {
-    if(loading === false) {
-      console.log(list)
-    }
-  }, [loading, list])
-
   return (
     <header className="text-center bg-dark text-white py-5 mb-5" style={list.length > 0 ? style : {backgroundColor: 'black'}}>
       {children}
