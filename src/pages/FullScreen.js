@@ -1,5 +1,5 @@
 import {useGradients} from "../context/GratientsContext"
-import {useParams} from "react-router-dom"
+import {useParams, Link} from "react-router-dom"
 import Footer from "../components/Footer"
 import { useState } from "react"
 
@@ -12,7 +12,7 @@ const handlClickNext = () =>{
   countId < (gradients.length) ? setCountId(Number(countId)+1) : setCountId(gradients.length)
 }
 const handlClickPrev = () =>{ 
-  countId > 0 ? setCountId(Number(countId) - 1) : setCountId(0)
+  countId > 0 ? setCountId(Number(countId) - 1) : setCountId(1)
 }
   return(
     <>
@@ -22,13 +22,13 @@ const handlClickPrev = () =>{
   }}>
         <nav className="fixed-top nav">
           <li className="nav-item">
-            <a className="btn btn-dark text-white nav-link me-2" href="/">Tous</a>
+            <Link className="btn btn-dark text-white nav-link me-2" to="/">Tous</Link>
           </li>
           <li className="nav-item">
-            <a className="btn btn-dark text-white nav-link me-2" href={`/gradient/${countId}`} onClick={handlClickPrev}>Précédent</a>
+            <Link className="btn btn-dark text-white nav-link me-2" to={`/gradient/${countId}`} onClick={handlClickPrev}>Précédent</Link>
           </li>
           <li className="nav-item">
-            <a className="btn btn-dark text-white nav-link" href={`/gradient/${countId}`} onClick={handlClickNext}>Suivant</a>
+            <Link className="btn btn-dark text-white nav-link" to={`/gradient/${countId}`} onClick={handlClickNext}>Suivant</Link>
           </li>
         </nav>     
         <div className="m-auto text-center">

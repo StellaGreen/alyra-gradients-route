@@ -8,13 +8,13 @@ import {BrowserRouter as Router} from "react-router-dom";
 import {GradientsContextProvider} from "./context/GratientsContext"
 
 ReactDOM.render(
-  <React.StrictMode>
+  
     <Router>
       <GradientsContextProvider>
       <App />
       </GradientsContextProvider>
     </Router>
-  </React.StrictMode>,
+ ,
   document.getElementById("root")
 )
 
