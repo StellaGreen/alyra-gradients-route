@@ -1,6 +1,5 @@
 import {useGradients} from "../context/GratientsContext"
 import {useParams, Link} from "react-router-dom"
-import Footer from "../components/Footer"
 import { useState } from "react"
 
 
@@ -16,10 +15,8 @@ const handlClickPrev = () =>{
 }
   return(
     <>
-    <div className="App min-vh-100 d-flex flex-column">
       <div className="flex-fill d-flex" style = {{
-    backgroundImage: `linear-gradient(to right, ${gradients[countId-1]?.start}, ${gradients[countId-1]?.end})`
-  }}>
+    backgroundImage: `linear-gradient(to right, ${gradients[countId-1]?.start}, ${gradients[countId-1]?.end})`}}>
         <nav className="fixed-top nav">
           <li className="nav-item">
             <Link className="btn btn-dark text-white nav-link me-2" to="/">Tous</Link>
@@ -38,8 +35,6 @@ const handlClickPrev = () =>{
           </div>
         </div>
       </div>
-    </div>
-    <Footer/>
     </>
   )
 }
