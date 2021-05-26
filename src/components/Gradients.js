@@ -5,7 +5,13 @@ const Gradients = () => {
 
   return (
     <>
+    {
+    //loading
+    }
       <GradientsSelect />
+        {
+    //error
+    }
       <GradientsList />
     </>
   )
