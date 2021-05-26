@@ -12,31 +12,6 @@ import {BrowserRouter as Router} from "react-router-dom";
 
 function App() {
 
-useEffect(()=>{
-  //login true
-  console.log(`${process.env.REACT_APP_API_URL}/gradients`)
-  fetch(`${process.env.REACT_APP_API_URL}/gradients`)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error(`something wrong with request: ${response.status}`)
-    }
-    return response.json()
-  })
-  .then(data => {
-    // data
-    console.log('data')
-    console.log(data)
-  })
-  .catch(e=> {
-    //error
-    console.log('error')
-    console.log(e.message)
-  })
-  .finally(() =>{
-    console.log('finally')
-    // login false
-  })
-})
 
   return (
     <Router>
