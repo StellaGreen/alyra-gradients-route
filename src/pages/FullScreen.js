@@ -31,7 +31,7 @@ const handlClickPrev = () =>{
         <div className="m-auto text-center">
           <h1 className="text-white display-1">{gradients[countId-1]?.name}</h1>
           <div className="bg-white shadow p-2 rounded">
-            <code>{`background-image: linear-gradient(to right, ${gradients[countId-1]?.start}, ${gradients[countId-1]?.end})`};</code>
+            <code>background-image: linear-gradient(to right, {gradients[countId-1]?.start}, {gradients[countId-1]?.end});</code>
           </div>
         </div>
       </div>
