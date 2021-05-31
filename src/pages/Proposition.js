@@ -85,6 +85,7 @@ const Proposition = () => {
               type="range"
               className="form-range float-end"
               id="start-r"
+              defaultValue="0"
               min="0"
               max="255"
               step="1"
@@ -96,6 +97,7 @@ const Proposition = () => {
               type="range"
               className="form-range float-end"
               id="start-g"
+              defaultValue="0"
               min="0"
               max="255"
               onChange={handleChange}
@@ -106,6 +108,7 @@ const Proposition = () => {
               type="range"
               className="form-range float-end"
               id="start-b"
+              defaultValue="0"
               min="0"
               max="255"
               onChange={handleChange}
@@ -118,6 +121,7 @@ const Proposition = () => {
               type="range"
               className="form-range float start"
               id="end-r"
+              defaultValue="0"
               min="0"
               max="255"
               step="1"
@@ -129,6 +133,7 @@ const Proposition = () => {
               type="range"
               className="form-range "
               id="end-g"
+              defaultValue="0"
               min="0"
               max="255"
               onChange={handleChange}
@@ -139,6 +144,7 @@ const Proposition = () => {
               type="range"
               className="form-range "
               id="end-b"
+              defaultValue="0"
               min="0"
               max="255"
               onChange={handleChange}
