@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from "uuid";
 const Proposition = () => {
   const [color, setColor] = useState({
     start: { r: 0, g: 0, b: 0 },
-    end: { r: 0, g: 0, b: 0 },
+    end: { r: 0, g: 0, b: 0 }
   });
   const [name, setName] = useState("default name");
   const { start, end } = color;
@@ -37,6 +37,12 @@ const Proposition = () => {
       }),
     });
   };
+  const handleReset = () => {
+    setColor({
+      start: { r: 0, g: 0, b: 0 },
+      end: { r: 0, g: 0, b: 0 },
+    });
+  }
   return (
     <>
       <div className="container">
@@ -72,7 +78,7 @@ const Proposition = () => {
               type="range"
               className="form-range"
               id="start-r"
-              defaultValue="0"
+              value={color.start.r}
               min="0"
               max="255"
               step="1"
@@ -82,7 +88,7 @@ const Proposition = () => {
               type="range"
               className="form-range"
               id="start-g"
-              defaultValue="0"
+              value={color.start.g}
               min="0"
               max="255"
               onChange={handleChange}
@@ -91,7 +97,7 @@ const Proposition = () => {
               type="range"
               className="form-range"
               id="start-b"
-              defaultValue="0"
+              value={color.start.b}
               min="0"
               max="255"
               onChange={handleChange}
@@ -102,7 +108,7 @@ const Proposition = () => {
               type="range"
               className="form-range"
               id="end-r"
-              defaultValue="0"
+              value={color.end.r}
               min="0"
               max="255"
               step="1"
@@ -112,7 +118,7 @@ const Proposition = () => {
               type="range"
               className="form-range"
               id="end-g"
-              defaultValue="0"
+              value={color.end.g}
               min="0"
               max="255"
               onChange={handleChange}
@@ -121,14 +127,19 @@ const Proposition = () => {
               type="range"
               className="form-range"
               id="end-b"
-              defaultValue="0"
+              value={color.end.b}
               min="0"
               max="255"
               onChange={handleChange}
             ></input>
           </div>
         </div>
-        <button onClick={handleSubmit}>submit</button>
+        <button className="btn btn-primary" onClick={handleSubmit}>
+          submit
+        </button>
+        <button className="btn btn-primary" onClick={handleReset}>
+          Submit
+        </button>
       </div>
     </>
   );
