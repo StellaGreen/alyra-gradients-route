@@ -47,7 +47,7 @@ const Proposition = () => {
     setColor({
       start: { r: 0, g: 0, b: 0 },
       end: { r: 0, g: 0, b: 0 },
-    })
+    })}
   return (
     <>
       <ToggleModeButton darkMode={darkMode} setDarkMode={setDarkMode} />
@@ -179,6 +179,5 @@ const Proposition = () => {
       </div>
     </>
   );
-}
 }
 export default Proposition
