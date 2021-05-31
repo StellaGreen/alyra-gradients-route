@@ -7,6 +7,8 @@ const Direction = () => {
   };
   return (
     <>
+    <div className="input-group mb-3 col-sm-6">
+      
       <label className="input-group-text" htmlFor="direction">
         Direction
       </label>
@@ -25,6 +27,7 @@ const Direction = () => {
         <option value="to top">Top</option>
         <option value="to bottom">Bottom</option>
       </select>
+      </div>
     </>
   );
 };

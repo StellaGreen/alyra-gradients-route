@@ -14,18 +14,21 @@ const GradientsSelect = () => {
     setFilter(e.target.value);
   };
   return (
-    <div className="input-group mb-3">
-      <label className="input-group-text" htmlFor="select">
-        Filtrer par tag
-      </label>
-      <select
-        className="form-select"
-        id="select"
-        value={filter}
-        onChange={handleSelectChange}
-      >
-        <option value="all">Tous ({gradients.length})</option>
-        {tags.sort().map((el) => (
+    <div className="container">
+      <div className="row">
+        
+        <div className="col-sm-6 input-group mb-3 ">
+          <label className="input-group-text" htmlFor="select">
+            Filtrer par tag
+          </label>
+          <select
+            className="form-select"
+            id="select"
+            value={filter}
+            onChange={handleSelectChange}
+          >
+          <option value="all">Tous ({gradients.length})</option>
+            {tags.sort().map((el) => (
           <option key={el} value={el}>
             {el.charAt(0).toUpperCase() +
               el.slice(1) +
@@ -33,10 +36,13 @@ const GradientsSelect = () => {
               nbTags(el, gradients) +
               ")"}
           </option>
-        ))}
-      </select>
-      <Direction />
+            ))}
+            
+          </select>
+          </div>
+          <Direction />
     </div>
+    </div> 
   );
 };
 
