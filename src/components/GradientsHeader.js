@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 //import { gradients as list } from "../gradients"
 import { ReactComponent as SvgToggle } from "bootstrap-icons/icons/arrow-clockwise.svg";
 import { ReactComponent as Next } from "bootstrap-icons/icons/arrow-right.svg";
@@ -8,19 +8,34 @@ import { useGradients } from "../context/GratientsContext";
 const GradientsHeader = (props) => {
   const { children } = props;
   const { gradients: list, direction } = useGradients();
-  const length = list.length;
+  const length = useRef(0);
 
-  const chooseGradient = () => Math.floor(Math.random() * length);
+  const chooseGradient = useCallback(
+    () => Math.floor(Math.random() * length.current),
+    []
+  );
 
-  const [randomGradient, setRandomGradient] = useState(chooseGradient);
+  const [randomGradient, setRandomGradient] = useState(0);
+
+  useEffect(() => {
+    if (list.length > 0) {
+      length.current = list.length;
+      setRandomGradient(chooseGradient);
+    }
+  }, [list, chooseGradient]);
+
   const handleReloadClick = () => {
     setRandomGradient(chooseGradient);
   };
   const handleNextClick = () => {
-    setRandomGradient(randomGradient === length - 1 ? 0 : randomGradient + 1);
+    setRandomGradient(
+      randomGradient === length.current - 1 ? 0 : randomGradient + 1
+    );
   };
   const handlePrevClick = () => {
-    setRandomGradient(randomGradient === 0 ? length - 1 : randomGradient - 1);
+    setRandomGradient(
+      randomGradient === 0 ? length.current - 1 : randomGradient - 1
+    );
   };
 
   const style = {

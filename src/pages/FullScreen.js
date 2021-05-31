@@ -4,26 +4,30 @@ import { useState } from "react";
 import Direction from "../components/Direction";
 
 const FullScreen = () => {
-  const { gradients, direction } = useGradients();
+  const { gradients, direction, loading } = useGradients();
   const { id } = useParams();
   const [countId, setCountId] = useState(id);
-  const handlClickNext = () => {
+  const handleClickNext = () => {
     countId < gradients.length
       ? setCountId(Number(countId) + 1)
       : setCountId(gradients.length);
   };
-  const handlClickPrev = () => {
+  const handleClickPrev = () => {
     countId > 0 ? setCountId(Number(countId) - 1) : setCountId(1);
   };
   return (
     <>
       <div
         className="flex-fill d-flex"
-        style={{
-          backgroundImage: `linear-gradient(${direction}, ${
-            gradients[countId - 1]?.start
-          }, ${gradients[countId - 1]?.end})`,
-        }}
+        style={
+          gradients.length > 0 && id > 0 && id <= gradients.length
+            ? {
+                backgroundImage: `linear-gradient(${direction}, ${
+                  gradients[countId - 1]?.start
+                }, ${gradients[countId - 1]?.end})`,
+              }
+            : { backgroundColor: "black" }
+        }
       >
         <nav className="fixed-top nav">
           <li className="nav-item">
@@ -36,7 +40,7 @@ const FullScreen = () => {
               <Link
                 className="btn btn-dark text-white nav-link me-2"
                 to={`/gradient/${Number(countId) - 1}`}
-                onClick={handlClickPrev}
+                onClick={handleClickPrev}
               >
                 Précédent
               </Link>
@@ -47,7 +51,7 @@ const FullScreen = () => {
               <Link
                 className="btn btn-dark text-white nav-link"
                 to={`/gradient/${Number(countId) + 1}`}
-                onClick={handlClickNext}
+                onClick={handleClickNext}
               >
                 Suivant
               </Link>
@@ -57,19 +61,27 @@ const FullScreen = () => {
             <Direction />
           </div>
         </nav>
-        <div className="m-auto text-center">
-          <h1 className="text-white display-1">
-            {gradients[countId - 1]?.name}
-          </h1>
-          <div className="bg-white shadow p-2 rounded">
-            <code>
-              {`background-image: linear-gradient(${direction}, 
+        {loading ? (
+          <p className="text-white m-auto text-center">loading...</p>
+        ) : !(id > 0 && id <= gradients.length) ? (
+          <p className="text-white m-auto text-center">
+            Oups, ce gradient n'existe pas
+          </p>
+        ) : (
+          <div className="m-auto text-center">
+            <h1 className="text-white display-1">
+              {gradients[countId - 1]?.name}
+            </h1>
+            <div className="bg-white shadow p-2 rounded">
+              <code>
+                {`background-image: linear-gradient(${direction}, 
               ${gradients[countId - 1]?.start}, 
               ${gradients[countId - 1]?.end})`}
-              ;
-            </code>
+                ;
+              </code>
+            </div>
           </div>
-        </div>
+        )}
       </div>
     </>
   );

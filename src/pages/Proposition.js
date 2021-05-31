@@ -1,28 +1,32 @@
-import GradientPill from "../components/GradientPill"
-import {useState} from "react"
+import GradientPill from "../components/GradientPill";
+import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 
 const Proposition = () => {
-  const [color, setColor] = useState({ start:{r:0,g:0,b:0}, end:{r:0,g:0,b:0} })
-  const [name, setName] = useState('default name')
-  const {start,end} = color
-  
+  const [color, setColor] = useState({
+    start: { r: 0, g: 0, b: 0 },
+    end: { r: 0, g: 0, b: 0 },
+  });
+  const [name, setName] = useState("default name");
+  const { start, end } = color;
+
   const handleChange = (e) => {
-    const [ent,val] = e.target.id.split('-')
-        setColor({
-          ...color,
-          [ent]: { ...color[ent], [val]: Number(e.target.value) },
-        }); 
-      }
+    const [ent, val] = e.target.id.split("-");
+    setColor({
+      ...color,
+      [ent]: { ...color[ent], [val]: Number(e.target.value) },
+    });
+  };
   const handleChangeName = (e) => {
-    setName(e.target.value)
-  }
+    setName(e.target.value);
+  };
 
   const handleSubmit = () => {
     fetch(`${process.env.REACT_APP_API_URL}/proposition`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: "Bearer 987654321",
       },
       body: JSON.stringify({
         id: uuidv4(),
@@ -31,7 +35,8 @@ const Proposition = () => {
         end: `rgb(${end.r},${end.g},${end.b})`,
         tags: [],
       }),
-    });}
+    });
+  };
   return (
     <>
       <div className="container">
@@ -121,5 +126,5 @@ const Proposition = () => {
       </div>
     </>
   );
-}
-export default Proposition
+};
+export default Proposition;
