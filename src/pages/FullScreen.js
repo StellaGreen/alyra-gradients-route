@@ -57,9 +57,6 @@ const FullScreen = () => {
               </Link>
             </li>
           )}
-          <div className="mx-2">
-            <Direction />
-          </div>
         </nav>
         {loading ? (
           <p className="text-white m-auto text-center">loading...</p>
@@ -68,7 +65,7 @@ const FullScreen = () => {
             Oups, ce gradient n'existe pas
           </p>
         ) : (
-          <div className="m-auto text-center">
+          <div className=" m-auto text-center">
             <h1 className="text-white display-1">
               {gradients[countId - 1]?.name}
             </h1>
@@ -79,6 +76,13 @@ const FullScreen = () => {
               ${gradients[countId - 1]?.end})`}
                 ;
               </code>
+            </div>
+            <div className="m-auto mt-2 row">
+              <div className="col-lg-6 offset-lg-3">
+                <div className="input-group mb-3 ">
+                  <Direction />
+                </div>
+              </div>
             </div>
           </div>
         )}
