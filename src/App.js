@@ -5,6 +5,7 @@ import Home from "./pages/Home"
 import FullScreen from "./pages/FullScreen"
 import Proposition from "./pages/Proposition";
 import Footer from "./components/Footer"
+import Admin from "./pages/Admin"
 
 function App() {  
   return (
@@ -13,6 +14,7 @@ function App() {
         <Route exact path="/" component={Home} />
         <Route exact path="/gradient/:id" component={FullScreen} />
         <Route exact path="/proposition" component={Proposition} />
+        <Route exact path="/admin" component={Admin} />
       </Switch>
       <Footer />
     </div>
