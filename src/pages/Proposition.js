@@ -11,7 +11,7 @@ const Proposition = () => {
   })
   const [name, setName] = useState("default name");
   const { start, end } = color;
-  const modeClasses = darkMode ? "bg-dark text-white rounded-3" : "bg-light rounded-3";
+  const modeClasses = darkMode ? "bg-dark text-white" : "bg-light";
   const superStyle = {
     width : "25rem"
   }
@@ -51,7 +51,7 @@ const Proposition = () => {
   return (
     <>
       <ToggleModeButton darkMode={darkMode} setDarkMode={setDarkMode} />
-      <div className={modeClasses}>
+      <div className={`${modeClasses} min-vh-100`}>
         <div className="container">
           <h1 className="display-2 text-center m-2 p-2">
             Make your Own proposition !
@@ -73,23 +73,26 @@ const Proposition = () => {
               colorEnd={`rgb(${end.r},${end.g},${end.b})`}
             />
           </div>
-          <div className="m-2">
-            <label className="pb-2 m-2 ml-5 fw-bold" htmlFor="gradient-name">
+          <div className="text-center">
+            <label
+              className="pb-2 m-2 ml-5 fw-bold d-block"
+              htmlFor="gradient-name"
+            >
               Name your gradient :{" "}
             </label>
             <input
               id="gradient-name"
               type="text"
-              className={modeClasses}
+              className={`${modeClasses} d-block m-auto mb-3`}
               onChange={handleChangeName}
               //defaultValue={name}
               placeholder={name}
               aria-label="readonly input example"
             ></input>
           </div>
-          <div className="row">
-            <div className="col-3"></div>
-            <div className="col-3">
+          <div className="row ">
+          
+            <div className="offset-lg-3 col-lg-3 text-center">
               <div className="text-danger">Red Start</div>
               <input
                 type="range"
@@ -125,11 +128,11 @@ const Proposition = () => {
                 style={superStyle}
               ></input>
             </div>
-            <div className="col-3">
-              <div className="text-danger text-center">Red End</div>
+            <div className="col-lg-3 text-center">
+              <div className="text-danger">Red End</div>
               <input
                 type="range"
-                className="form-range float start"
+                className="form-range float-start"
                 id="end-r"
                 value={color.end.r}
                 min="0"
@@ -138,10 +141,10 @@ const Proposition = () => {
                 onChange={handleChange}
                 style={superStyle}
               ></input>
-              <div className="text-success text-center">Green End</div>
+              <div className="text-success">Green End</div>
               <input
                 type="range"
-                className="form-range "
+                className="form-range float-start"
                 id="end-g"
                 value={color.end.g}
                 min="0"
@@ -149,10 +152,10 @@ const Proposition = () => {
                 onChange={handleChange}
                 style={superStyle}
               ></input>
-              <div className="text-primary text-center">Blue End</div>
+              <div className="text-primary">Blue End</div>
               <input
                 type="range"
-                className="form-range "
+                className="form-range float-start"
                 id="end-b"
                 value={color.end.b}
                 min="0"
