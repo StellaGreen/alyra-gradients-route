@@ -37,21 +37,23 @@ useEffect(() => {
 }, []);
 console.log(state.gradients[0])
   return (
-<ul className="row list-unstyled">
-      {state.gradients.map((el) => {
-        const { name, start, end, tags = [], id } = el
-        return (
-          <li className="col-lg-3 col-md-4 col-sm-6" key={id}>
-            <div className="card p-3 mb-4 shadow">
-              <GradientPill colorStart={start} colorEnd={end} />
-              <GradientTitle>{name}</GradientTitle>
-              <GradientCode colorStart={start} colorEnd={end} />
-              <p>{tags}</p>
-            </div>
-          </li>
-        );
-      })}
-    </ul>
+    <div className="container">
+      <ul className="row list-unstyled">
+          {state.gradients.map((el) => {
+            const { name, start, end, tags = [], id } = el
+            return (
+              <li className="col-lg-3 col-md-4 col-sm-6" key={id}>
+                <div className="card p-3 mb-4 shadow">
+                  <GradientPill colorStart={start} colorEnd={end} />
+                  <GradientTitle>{name}</GradientTitle>
+                  <GradientCode colorStart={start} colorEnd={end} />
+                  <p>{tags}</p>
+                </div>
+              </li>
+            );
+          })}
+      </ul>
+    </div>
   );
 }
 export default Admin
