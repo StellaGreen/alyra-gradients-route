@@ -36,12 +36,22 @@ const Proposition = () => {
       },
       body: JSON.stringify({
         id: uuidv4(),
-        name: name,
+        name,
         start: `rgb(${start.r},${start.g},${start.b})`,
         end: `rgb(${end.r},${end.g},${end.b})`,
         tags: [],
-      }),
-    });
+      })}).then((response) => {
+        if (!response.ok) {
+          throw new Error(`something wrong with request: ${response.status}`);
+        }
+        return response.json();
+      }).then((data) => {
+      alert('your proposition has been sent')
+      console.log(data)
+      }).catch((e) =>{
+        alert('error')
+        console.error(e.message)
+      })
   }
   const handleReset = () => {
     setColor({
