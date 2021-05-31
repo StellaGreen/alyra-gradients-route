@@ -42,127 +42,143 @@ const Proposition = () => {
         tags: [],
       }),
     });
-  };
+  }
   const handleReset = () => {
     setColor({
       start: { r: 0, g: 0, b: 0 },
       end: { r: 0, g: 0, b: 0 },
-    });
+    })
   return (
     <>
-    <ToggleModeButton darkMode={darkMode} setDarkMode={setDarkMode} />
-    <div className={modeClasses}>
-      <div className="container">
-        <h1 className="display-2 text-center m-2 p-2">Make your Own proposition !</h1>
-        <h3 className="text-center pb-2 fw-lighter">It's easy to do with the power of RGB !</h3>
-        <div className="row">
-          <GradientPill
-            colorStart={`rgb(${start.r},${start.g},${start.b})`}
-            colorEnd={`rgb(${start.r},${start.g},${start.b})`}
-          />
-          <GradientPill
-            colorStart={`rgb(${start.r},${start.g},${start.b})`}
-            colorEnd={`rgb(${end.r},${end.g},${end.b})`}
-          />
-          <GradientPill
-            colorStart={`rgb(${end.r},${end.g},${end.b})`}
-            colorEnd={`rgb(${end.r},${end.g},${end.b})`}
-          />
-        </div>
-        <div className="m-2">
-          <label className="pb-2 m-2 ml-5 fw-bold" htmlFor="gradient-name" >Name your gradient  :   </label>
-          <input
-            id="gradient-name"
-            type="text"
-            className={modeClasses}
-            onChange={handleChangeName}
-            //defaultValue={name}
-            placeholder={name}
-            aria-label="readonly input example"
-            
-          ></input>
-        </div>
-        <div className="row">
+      <ToggleModeButton darkMode={darkMode} setDarkMode={setDarkMode} />
+      <div className={modeClasses}>
+        <div className="container">
+          <h1 className="display-2 text-center m-2 p-2">
+            Make your Own proposition !
+          </h1>
+          <h3 className="text-center pb-2 fw-lighter">
+            It's easy to do with the power of RGB !
+          </h3>
+          <div className="row">
+            <GradientPill
+              colorStart={`rgb(${start.r},${start.g},${start.b})`}
+              colorEnd={`rgb(${start.r},${start.g},${start.b})`}
+            />
+            <GradientPill
+              colorStart={`rgb(${start.r},${start.g},${start.b})`}
+              colorEnd={`rgb(${end.r},${end.g},${end.b})`}
+            />
+            <GradientPill
+              colorStart={`rgb(${end.r},${end.g},${end.b})`}
+              colorEnd={`rgb(${end.r},${end.g},${end.b})`}
+            />
+          </div>
+          <div className="m-2">
+            <label className="pb-2 m-2 ml-5 fw-bold" htmlFor="gradient-name">
+              Name your gradient :{" "}
+            </label>
+            <input
+              id="gradient-name"
+              type="text"
+              className={modeClasses}
+              onChange={handleChangeName}
+              //defaultValue={name}
+              placeholder={name}
+              aria-label="readonly input example"
+            ></input>
+          </div>
+          <div className="row">
+            <div className="col-3"></div>
+            <div className="col-3">
+              <div className="text-danger">Red Start</div>
+              <input
+                type="range"
+                className="form-range float-end"
+                id="start-r"
+                value={color.start.r}
+                min="0"
+                max="255"
+                step="1"
+                onChange={handleChange}
+                style={superStyle}
+              ></input>
+              <div className="text-success">Green Start</div>
+              <input
+                type="range"
+                className="form-range float-end"
+                id="start-g"
+                value={color.start.g}
+                min="0"
+                max="255"
+                onChange={handleChange}
+                style={superStyle}
+              ></input>
+              <div className="text-primary">Blue Start</div>
+              <input
+                type="range"
+                className="form-range float-end"
+                id="start-b"
+                value={color.start.b}
+                min="0"
+                max="255"
+                onChange={handleChange}
+                style={superStyle}
+              ></input>
+            </div>
+            <div className="col-3">
+              <div className="text-danger text-center">Red End</div>
+              <input
+                type="range"
+                className="form-range float start"
+                id="end-r"
+                value={color.end.r}
+                min="0"
+                max="255"
+                step="1"
+                onChange={handleChange}
+                style={superStyle}
+              ></input>
+              <div className="text-success text-center">Green End</div>
+              <input
+                type="range"
+                className="form-range "
+                id="end-g"
+                value={color.end.g}
+                min="0"
+                max="255"
+                onChange={handleChange}
+                style={superStyle}
+              ></input>
+              <div className="text-primary text-center">Blue End</div>
+              <input
+                type="range"
+                className="form-range "
+                id="end-b"
+                value={color.end.b}
+                min="0"
+                max="255"
+                onChange={handleChange}
+                style={superStyle}
+              ></input>
+            </div>
+          </div>
           <div className="col-3"></div>
-          <div className="col-3">
-          <div className="text-danger">Red Start</div>
-            <input
-              type="range"
-              className="form-range float-end"
-              id="start-r"
-              value={color.start.r}
-              min="0"
-              max="255"
-              step="1"
-              onChange={handleChange}
-              style={superStyle}
-            ></input>
-            <div className="text-success">Green Start</div>
-            <input
-              type="range"
-              className="form-range float-end"
-              id="start-g"
-              value={color.start.g}
-              min="0"
-              max="255"
-              onChange={handleChange}
-              style={superStyle}
-            ></input>
-            <div className="text-primary">Blue Start</div>
-            <input
-              type="range"
-              className="form-range float-end"
-              id="start-b"
-              value={color.start.b}
-              min="0"
-              max="255"
-              onChange={handleChange}
-              style={superStyle}
-            ></input>
-          </div>
-          <div className="col-3">
-          <div className="text-danger text-center">Red End</div>
-            <input
-              type="range"
-              className="form-range float start"
-              id="end-r"
-              value={color.end.r}
-              min="0"
-              max="255"
-              step="1"
-              onChange={handleChange}
-              style={superStyle}
-            ></input>
-            <div className="text-success text-center">Green End</div>
-            <input
-              type="range"
-              className="form-range "
-              id="end-g"
-              value={color.end.g}
-              min="0"
-              max="255"
-              onChange={handleChange}
-              style={superStyle}
-            ></input>
-            <div className="text-primary text-center">Blue End</div>
-            <input
-              type="range"
-              className="form-range "
-              id="end-b"
-              value={color.end.b}
-              min="0"
-              max="255"
-              onChange={handleChange}
-              style={superStyle}
-            ></input>
-          </div>
+          <button
+            className="btn btn-primary mt-5 p-1 mb-5 d-grid gap-2 col-6 mx-auto"
+            onClick={handleSubmit}
+          >
+            submit
+          </button>
+          <button
+            className="btn btn-primary mt-5 p-1 mb-5 d-grid gap-2 col-6 mx-auto"
+            onClick={handleReset}
+          >
+            reset
+          </button>
         </div>
-        <div className="col-3"></div>
-        <button className="btn btn-primary mt-5 p-1 mb-5 d-grid gap-2 col-6 mx-auto" onClick={handleSubmit}>submit</button>
-        <button className="btn btn-primary mt-5 p-1 mb-5 d-grid gap-2 col-6 mx-auto" onClick={handleReset}>reset</button>
-      </div>
       </div>
     </>
-  )
+  );
 }
-export default Proposition;
+}
+export default Proposition
