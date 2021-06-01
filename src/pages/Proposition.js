@@ -95,10 +95,17 @@ const Proposition = () => {
     width:"6rem",
     boxShadow: "0px 0px 10px gray"}
   const handleToggleTags = (e) => {
-        setColor({
-          ...color,
-          tags:[...color.tags, e.target.textContent]})
-          
+    if (color.tags.includes(e.target.textContent)) {
+      setColor({
+        ...color,
+        tags: color.tags.filter((el) => el !== e.target.textContent),
+      });
+    }else{
+      setColor({
+        ...color,
+        tags: [...color.tags, e.target.textContent],
+      });      
+    }
   }
   const styleTags = {
     position:"relative",
@@ -110,15 +117,15 @@ const Proposition = () => {
   return (
     <>
       <ToggleModeButton darkMode={darkMode} setDarkMode={setDarkMode} />
-      
+
       <div className={`${modeClasses} min-vh-100`}>
-      <Link
-        className="btn text-white nav-link mx-auto"
-        to="/"
-        style={buttonStyle}
-      >
-        Home
-      </Link>
+        <Link
+          className="btn text-white nav-link mx-auto"
+          to="/"
+          style={buttonStyle}
+        >
+          Home
+        </Link>
         <div className="container">
           <h1 className="display-2 text-center m-2 p-2 mt-lg-5">
             Make your Own proposition !
@@ -233,18 +240,23 @@ const Proposition = () => {
           </div>
           <div className="container">
             <h3 className="text-center pt-4"> Select the tags :</h3>
-            <div className="col-md-5 middle text-center m-auto" style={styleTags}>
-            {normTags.map(el => <button key = {el}
-              type="button"
-              className={`btn btn-sm me-2 mb-2 ${
-                darkMode ? "btn-light" : "btn-dark text-white"
-              }`}
-              onClick={handleToggleTags}
-              >
-             {el}
-            </button>)}
+            <div
+              className="col-md-5 middle text-center m-auto"
+              style={styleTags}
+            >
+              {normTags.map((el) => (
+                <button
+                  key={el}
+                  type="button"
+                  className={`btn btn-sm me-2 mb-2 ${color.tags.includes(el) ? "btn-success" : darkMode ? "btn-light" : "btn-dark text-white"}`}
+                   
+                 
+                  onClick={handleToggleTags}
+                >
+                  {el}
+                </button>
+              ))}
             </div>
-            
           </div>
           <button
             className="btn btn-primary mt-5 p-1 d-grid gap-2 col-6 mx-auto"
