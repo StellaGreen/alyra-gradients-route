@@ -62,7 +62,7 @@ const Proposition = () => {
         name,
         start: `rgb(${start.r},${start.g},${start.b})`,
         end: `rgb(${end.r},${end.g},${end.b})`,
-        tags: [],
+        tags: color.tags,
        })
      })
       .then((response) => {

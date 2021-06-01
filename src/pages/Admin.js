@@ -31,7 +31,6 @@ const Admin = () => {
         propositionDispatch({ type: "FETCH_FAILURE", payload: e.message });
       });
   }, []);
-  console.log(state.gradients)
   return (
     <div className="container">
       <ul className="row list-unstyled">
