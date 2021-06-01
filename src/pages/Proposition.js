@@ -90,9 +90,7 @@ const Proposition = () => {
   };
   const buttonStyle = {
     backgroundImage: "linear-gradient(to right, rgb(52,106,181), rgb(185,12,46))",
-    position:"relative",
-    top:"0rem",
-    left:"36rem",
+   
     marginTop:"1rem",
     width:"6rem",
     boxShadow: "0px 0px 10px gray"}
@@ -115,7 +113,7 @@ const Proposition = () => {
       
       <div className={`${modeClasses} min-vh-100`}>
       <Link
-        className="btn text-white nav-link me-2"
+        className="btn text-white nav-link mx-auto"
         to="/"
         style={buttonStyle}
       >

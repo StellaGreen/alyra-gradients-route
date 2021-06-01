@@ -9,6 +9,7 @@ const Home =()=>{
     marginTop:"1rem",
     width:"9rem",
     boxShadow: "2px 4px 10px red",
+    zIndex:"1"
   }
  return (
    <>
@@ -18,7 +19,7 @@ const Home =()=>{
      </GradientsHeader>
      <main className="container">
        <Link
-         className="btn fw-bold text-white nav-link me-2 position-absolute top-50 end-0 translate-middle"
+         className="btn fw-bold text-white position-fixed end-0 nav-link m-auto"
          style={buttonStyle}
          to="/proposition"
        >
