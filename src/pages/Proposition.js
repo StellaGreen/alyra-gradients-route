@@ -84,6 +84,7 @@ const Proposition = () => {
     setColor({
       start: { r: 0, g: 0, b: 0 },
       end: { r: 0, g: 0, b: 0 },
+      tags:[]
     });
   };
   const handleToggleTags = (e) => {
