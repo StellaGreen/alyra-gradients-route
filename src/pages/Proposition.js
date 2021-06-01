@@ -249,8 +249,6 @@ const Proposition = () => {
                   key={el}
                   type="button"
                   className={`btn btn-sm me-2 mb-2 ${color.tags.includes(el) ? "btn-success" : darkMode ? "btn-light" : "btn-dark text-white"}`}
-                   
-                 
                   onClick={handleToggleTags}
                 >
                   {el}
