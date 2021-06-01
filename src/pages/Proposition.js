@@ -64,16 +64,24 @@ const Proposition = () => {
       end: { r: 0, g: 0, b: 0 },
     });
   };
+  const buttonStyle = {
+    backgroundImage: "linear-gradient(to right, rgb(52,106,181), rgb(185,12,46))",
+    marginTop:"1rem",
+    width:"6rem",
+    boxShadow: "0px 0px 10px gray",
+  }
   return (
     <>
       <ToggleModeButton darkMode={darkMode} setDarkMode={setDarkMode} />
+      
+      <div className={`${modeClasses} min-vh-100`}>
       <Link
-        className="btn btn-light btn-outline-dark w-100 text-dark nav-link me-2"
+        className="btn text-white position-absolute start-50 nav-link me-2"
         to="/"
+        style={buttonStyle}
       >
         Home
       </Link>
-      <div className={`${modeClasses} min-vh-100`}>
         <div className="container">
           <h1 className="display-2 text-center m-2 p-2 mt-lg-5">
             Make your Own proposition !
