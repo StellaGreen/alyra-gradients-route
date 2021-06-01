@@ -27,6 +27,7 @@ const normTags = [
   
 const Proposition = () => {
   const [darkMode, setDarkMode] = useState(true);
+
   const [color, setColor] = useState({
     start: { r: 0, g: 0, b: 0 },
     end: { r: 0, g: 0, b: 0 },
@@ -62,7 +63,7 @@ const Proposition = () => {
         name,
         start: `rgb(${start.r},${start.g},${start.b})`,
         end: `rgb(${end.r},${end.g},${end.b})`,
-        tags: [],
+        tags: color.tags,
        })
      })
       .then((response) => {
@@ -84,6 +85,7 @@ const Proposition = () => {
     setColor({
       start: { r: 0, g: 0, b: 0 },
       end: { r: 0, g: 0, b: 0 },
+      tags:[]
     });
   };
   const buttonStyle = {
@@ -98,11 +100,11 @@ const Proposition = () => {
         setColor({
           ...color,
           tags:[...color.tags, e.target.textContent]})
+          
   }
   const styleTags = {
     position:"relative",
     right:"0rem",
-    left:"20rem",
     top:"2rem",
     
   }
@@ -233,29 +235,27 @@ const Proposition = () => {
           </div>
           <div className="container">
             <h3 className="text-center pt-4"> Select the tags :</h3>
-            <div className="row"></div>
-            <div className="col-md-5 middle text-center" style={styleTags}>
+            <div className="col-md-5 middle text-center m-auto" style={styleTags}>
             {normTags.map(el => <button key = {el}
               type="button"
               className={`btn btn-sm me-2 mb-2 ${
                 darkMode ? "btn-light" : "btn-dark text-white"
               }`}
               onClick={handleToggleTags}
-            >
+              >
              {el}
             </button>)}
             </div>
             
           </div>
-          <div className="col-3"></div>
           <button
-            className="btn btn-primary mt-5 p-1 mb-5 d-grid gap-2 col-6 mx-auto"
+            className="btn btn-primary mt-5 p-1 d-grid gap-2 col-6 mx-auto"
             onClick={handleSubmit}
           >
             submit
           </button>
           <button
-            className="btn btn-primary mt-5 p-1 mb-5 d-grid gap-2 col-6 mx-auto"
+            className="btn btn-primary mt-2 p-1 mb-5 d-grid gap-2 col-6 mx-auto"
             onClick={handleReset}
           >
             reset
