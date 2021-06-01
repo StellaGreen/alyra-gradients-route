@@ -4,11 +4,17 @@ import "bootstrap/dist/css/bootstrap.css"
 import "./index.css"
 import App from "./App"
 import * as serviceWorker from "./serviceWorker"
+import {BrowserRouter as Router} from "react-router-dom";
+import {GradientsContextProvider} from "./context/GratientsContext"
 
 ReactDOM.render(
-  <React.StrictMode>
-    <App />
-  </React.StrictMode>,
+  
+    <Router>
+      <GradientsContextProvider>
+      <App />
+      </GradientsContextProvider>
+    </Router>
+ ,
   document.getElementById("root")
 )
 
