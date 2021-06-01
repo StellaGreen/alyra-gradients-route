@@ -2,6 +2,7 @@ import GradientPill from "../components/GradientPill";
 import { useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import ToggleModeButton  from "../components/ToggleModeButton"
+import {Link} from "react-router-dom"
 
 const Proposition = () => {
   const [darkMode, setDarkMode] = useState(true);
@@ -61,6 +62,12 @@ const Proposition = () => {
   return (
     <>
       <ToggleModeButton darkMode={darkMode} setDarkMode={setDarkMode} />
+      <Link
+        className="btn btn-light btn-outline-dark w-100 text-dark nav-link me-2"
+        to="/"
+      >
+        Home
+      </Link>
       <div className={`${modeClasses} min-vh-100`}>
         <div className="container">
           <h1 className="display-2 text-center m-2 p-2">
@@ -101,7 +108,6 @@ const Proposition = () => {
             ></input>
           </div>
           <div className="row ">
-          
             <div className="offset-lg-3 col-lg-3 text-center">
               <div className="text-danger">Red Start</div>
               <input
@@ -174,6 +180,17 @@ const Proposition = () => {
                 style={superStyle}
               ></input>
             </div>
+          </div>
+          <div>
+            <h3> select tags</h3>
+            <button
+              type="button"
+              className={`btn btn-sm me-2 mb-2 ${
+                darkMode ? "btn-light" : "btn-dark text-white"
+              }`}
+            >
+              bleu
+            </button>
           </div>
           <div className="col-3"></div>
           <button
