@@ -27,6 +27,7 @@ const normTags = [
   
 const Proposition = () => {
   const [darkMode, setDarkMode] = useState(true);
+
   const [color, setColor] = useState({
     start: { r: 0, g: 0, b: 0 },
     end: { r: 0, g: 0, b: 0 },
@@ -91,6 +92,7 @@ const Proposition = () => {
         setColor({
           ...color,
           tags:[...color.tags, e.target.textContent]})
+          
   }
   console.log(color.tags)
   return (
@@ -223,6 +225,7 @@ const Proposition = () => {
                 darkMode ? "btn-light" : "btn-dark text-white"
               }`}
               onClick={handleToggleTags}
+              disabled={disabled}
             >
              {el}
             </button>)}
