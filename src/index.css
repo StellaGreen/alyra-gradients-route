@@ -21,9 +21,9 @@ code {
 }
 
 input[type="range"]::-webkit-slider-thumb {
-  width: 20px;
-  height: 20px;
-  background: #0abb22;
+  width: 1rem;
+  height: 1rem;
+  background-image: linear-gradient(to right top, rgb(189, 195, 199), rgb(44, 62, 80));
 }
 
 /*::-moz-range-thumb*/
@@ -33,9 +33,9 @@ input[type="range"]::-webkit-slider-thumb {
 }
 
 input[type="range"]::-moz-range-thumb {
-  width: 20px;
-  height: 20px;
-  background-color: rgb(66, 2, 214); /* firefox button */
+  width: 1rem;
+  height: 1rem;
+  background-image: linear-gradient(to right top, rgb(189, 195, 199), rgb(44, 62, 80)); /* firefox button */
 }
 
 #start-r::-moz-range-progress,
