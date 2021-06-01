@@ -1,13 +1,12 @@
-
 import React from "react";
-import { Switch,Route} from "react-router-dom";
-import Home from "./pages/Home"
-import FullScreen from "./pages/FullScreen"
+import { Switch, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import FullScreen from "./pages/FullScreen";
 import Proposition from "./pages/Proposition";
-import Footer from "./components/Footer"
-import Admin from "./pages/Admin"
+import Footer from "./components/Footer";
+import Admin from "./pages/Admin";
 
-function App() {  
+function App() {
   return (
     <div className="App min-vh-100 d-flex flex-column">
       <Switch>
@@ -21,4 +20,4 @@ function App() {
   );
 }
 
-export default App
+export default App;
