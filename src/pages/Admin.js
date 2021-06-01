@@ -60,7 +60,7 @@ const Admin = () => {
     <div className="container">
       <ul className="row list-unstyled">
         {state.gradients.map((el) => {
-          const { name, start, end, tags = [], id } = el;
+          const { name, start, end, tags, id } = el;
           return (
             <li className="col-lg-3 col-md-4 col-sm-6" key={id}>
               <div className="card p-3 mb-4 shadow">
