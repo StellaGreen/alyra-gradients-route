@@ -91,6 +91,7 @@ const Proposition = () => {
           ...color,
           tags:[...color.tags, e.target.textContent]})
   }
+  console.log(color.tags)
   return (
     <>
       <ToggleModeButton darkMode={darkMode} setDarkMode={setDarkMode} />
