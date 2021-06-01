@@ -161,7 +161,7 @@ const Proposition = () => {
               onChange={handleChangeName}
               //defaultValue={name}
               placeholder={name}
-              aria-label="readonly input example"
+              aria-label="gradient name"
             ></input>
           </div>
           <div className="row ">
@@ -181,6 +181,7 @@ const Proposition = () => {
                     step="1"
                     onChange={handleChange}
                     style={superStyle}
+                    aria-label="gradient selector"
                   ></input>
                 </div>
                 <div>
@@ -196,6 +197,7 @@ const Proposition = () => {
                     max="255"
                     onChange={handleChange}
                     style={superStyle}
+                    aria-label="gradient selector"
                   ></input>
                 </div>
                 <div>
@@ -211,6 +213,7 @@ const Proposition = () => {
                     max="255"
                     onChange={handleChange}
                     style={superStyle}
+                    aria-label="gradient selector"
                   ></input>
                 </div>
               </div>
@@ -231,6 +234,7 @@ const Proposition = () => {
                     step="1"
                     onChange={handleChange}
                     style={superStyle}
+                    aria-label="gradient selector"
                   ></input>
                 </div>
                 <div>
@@ -261,6 +265,7 @@ const Proposition = () => {
                     max="255"
                     onChange={handleChange}
                     style={superStyle}
+                    aria-label="gradient selector"
                   ></input>
                 </div>
               </div>
