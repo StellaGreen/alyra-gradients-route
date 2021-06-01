@@ -4,11 +4,33 @@ import { v4 as uuidv4 } from "uuid";
 import ToggleModeButton  from "../components/ToggleModeButton"
 import {Link} from "react-router-dom"
 
+const normTags = [
+  "blanc",
+  "noir",
+  "pourpre",
+  "rouge",
+  "orange",
+  "jaune",
+  "vert",
+  "bleu",
+  "violet",
+  "ivoire",
+  "crème",
+  "beige",
+  "rose",
+  "kaki",
+  "brun",
+  "marron",
+  "bordeaux",
+
+]
+  
 const Proposition = () => {
   const [darkMode, setDarkMode] = useState(true);
   const [color, setColor] = useState({
     start: { r: 0, g: 0, b: 0 },
     end: { r: 0, g: 0, b: 0 },
+    tags:[]
   });
   const [name, setName] = useState("default name");
   const { start, end } = color;
@@ -64,6 +86,11 @@ const Proposition = () => {
       end: { r: 0, g: 0, b: 0 },
     });
   };
+  const handleToggleTags = (e) => {
+        setColor({
+          ...color,
+          tags:[...color.tags, e.target.textContent]})
+  }
   return (
     <>
       <ToggleModeButton darkMode={darkMode} setDarkMode={setDarkMode} />
@@ -188,14 +215,16 @@ const Proposition = () => {
           </div>
           <div>
             <h3> select tags</h3>
-            <button
+            {normTags.map(el => <button key = {el}
               type="button"
               className={`btn btn-sm me-2 mb-2 ${
                 darkMode ? "btn-light" : "btn-dark text-white"
               }`}
+              onClick={handleToggleTags}
             >
-              bleu
-            </button>
+             {el}
+            </button>)}
+            
           </div>
           <div className="col-3"></div>
           <button
