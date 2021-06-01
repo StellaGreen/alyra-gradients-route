@@ -106,6 +106,7 @@ const Proposition = () => {
     top:"2rem",
     
   }
+  console.log(color.tags)
   return (
     <>
       <ToggleModeButton darkMode={darkMode} setDarkMode={setDarkMode} />
