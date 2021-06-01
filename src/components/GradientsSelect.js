@@ -14,9 +14,9 @@ const GradientsSelect = () => {
     setFilter(e.target.value);
   };
   return (
-    <div className="container">
+    <div className="container sticky-top">
       <div className="row">
-        <div className="col-lg-6 ">
+        <div className="col-lg-6 p-0 pe-lg-2">
           <div className="input-group mb-3 ">
             <label className="input-group-text" htmlFor="select">
               Filtrer par tag
@@ -40,14 +40,13 @@ const GradientsSelect = () => {
             </select>
           </div>
         </div>
-        <div className="col-lg-6"> 
-         <div className="input-group mb-3 ">
+        <div className="col-lg-6 p-0 ps-lg-2">
+          <div className="input-group mb-3 ">
             <Direction />
-           </div>  
+          </div>
         </div>
       </div>
     </div>
-
   );
 };
 

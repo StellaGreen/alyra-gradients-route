@@ -8,14 +8,14 @@ const Proposition = () => {
   const [darkMode, setDarkMode] = useState(true);
   const [color, setColor] = useState({
     start: { r: 0, g: 0, b: 0 },
-    end: { r: 0, g: 0, b: 0 }
-  })
+    end: { r: 0, g: 0, b: 0 },
+  });
   const [name, setName] = useState("default name");
   const { start, end } = color;
   const modeClasses = darkMode ? "bg-dark text-white" : "bg-light";
   const superStyle = {
-    width : "25rem"
-  }
+    width: "25rem",
+  };
 
   const handleChange = (e) => {
     const [ent, val] = e.target.id.split("-");
@@ -41,15 +41,19 @@ const Proposition = () => {
         start: `rgb(${start.r},${start.g},${start.b})`,
         end: `rgb(${end.r},${end.g},${end.b})`,
         tags: [],
-      })}).then((response) => {
+       })
+     })
+      .then((response) => {
         if (!response.ok) {
           throw new Error(`something wrong with request: ${response.status}`);
         }
         return response.json();
-      }).then((data) => {
-      alert('your proposition has been sent')
-      console.log(data)
-      }).catch((e) =>{
+      })
+        .then((data) => {
+        alert('your proposition has been sent')
+        console.log(data)
+      })
+      .catch((e) =>{
         alert('error')
         console.error(e.message)
       })
@@ -58,7 +62,8 @@ const Proposition = () => {
     setColor({
       start: { r: 0, g: 0, b: 0 },
       end: { r: 0, g: 0, b: 0 },
-    })}
+    });
+  };
   return (
     <>
       <ToggleModeButton darkMode={darkMode} setDarkMode={setDarkMode} />
@@ -70,10 +75,10 @@ const Proposition = () => {
       </Link>
       <div className={`${modeClasses} min-vh-100`}>
         <div className="container">
-          <h1 className="display-2 text-center m-2 p-2">
+          <h1 className="display-2 text-center m-2 p-2 mt-lg-5">
             Make your Own proposition !
           </h1>
-          <h3 className="text-center pb-2 fw-lighter">
+          <h3 className="text-center pb-2 fw-lighter mt-lg-4">
             It's easy to do with the power of RGB !
           </h3>
           <div className="row">
@@ -209,5 +214,5 @@ const Proposition = () => {
       </div>
     </>
   );
-}
-export default Proposition
+};
+export default Proposition;
