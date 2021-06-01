@@ -31,17 +31,19 @@ const Admin = () => {
         propositionDispatch({ type: "FETCH_FAILURE", payload: e.message });
       });
   }, []);
+  console.log(state.gradients)
   return (
     <div className="container">
       <ul className="row list-unstyled">
         {state.gradients.map((el) => {
-          const { name, start, end, tags = [], id } = el;
+          const { name, start, end, tags, id } = el;
           return (
             <li className="col-lg-3 col-md-4 col-sm-6" key={id}>
               <div className="card p-3 mb-4 shadow">
                 <GradientPill colorStart={start} colorEnd={end} />
                 <GradientTitle>{name}</GradientTitle>
                 <GradientCode colorStart={start} colorEnd={end} />
+                <p>tags</p>
                 <p>{tags}</p>
                 <div className="d-flex justify-content-around">
                   <button
