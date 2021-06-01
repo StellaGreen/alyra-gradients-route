@@ -88,23 +88,40 @@ const Proposition = () => {
       tags:[]
     });
   };
+  const buttonStyle = {
+    backgroundImage: "linear-gradient(to right, rgb(52,106,181), rgb(185,12,46))",
+    position:"relative",
+    top:"0rem",
+    left:"36rem",
+    marginTop:"1rem",
+    width:"6rem",
+    boxShadow: "0px 0px 10px gray"}
   const handleToggleTags = (e) => {
         setColor({
           ...color,
           tags:[...color.tags, e.target.textContent]})
           
   }
+  const styleTags = {
+    position:"relative",
+    right:"0rem",
+    left:"20rem",
+    top:"2rem",
+    
+  }
   console.log(color.tags)
   return (
     <>
       <ToggleModeButton darkMode={darkMode} setDarkMode={setDarkMode} />
+      
+      <div className={`${modeClasses} min-vh-100`}>
       <Link
-        className="btn btn-light btn-outline-dark w-100 text-dark nav-link me-2"
+        className="btn text-white nav-link me-2"
         to="/"
+        style={buttonStyle}
       >
         Home
       </Link>
-      <div className={`${modeClasses} min-vh-100`}>
         <div className="container">
           <h1 className="display-2 text-center m-2 p-2 mt-lg-5">
             Make your Own proposition !
@@ -217,8 +234,10 @@ const Proposition = () => {
               ></input>
             </div>
           </div>
-          <div>
-            <h3> select tags</h3>
+          <div className="container">
+            <h3 className="text-center pt-4"> Select the tags :</h3>
+            <div className="row"></div>
+            <div className="col-md-5 middle text-center" style={styleTags}>
             {normTags.map(el => <button key = {el}
               type="button"
               className={`btn btn-sm me-2 mb-2 ${
@@ -229,6 +248,7 @@ const Proposition = () => {
             >
              {el}
             </button>)}
+            </div>
             
           </div>
           <div className="col-3"></div>
