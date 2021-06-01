@@ -165,77 +165,105 @@ const Proposition = () => {
             ></input>
           </div>
           <div className="row ">
-            <div className="offset-lg-3 col-lg-3 text-center">
-              <div className="text-danger">Red Start</div>
-              <input
-                type="range"
-                className="form-range float-end"
-                id="start-r"
-                value={color.start.r}
-                min="0"
-                max="255"
-                step="1"
-                onChange={handleChange}
-                style={superStyle}
-              ></input>
-              <div className="text-success">Green Start</div>
-              <input
-                type="range"
-                className="form-range float-end"
-                id="start-g"
-                value={color.start.g}
-                min="0"
-                max="255"
-                onChange={handleChange}
-                style={superStyle}
-              ></input>
-              <div className="text-primary">Blue Start</div>
-              <input
-                type="range"
-                className="form-range float-end"
-                id="start-b"
-                value={color.start.b}
-                min="0"
-                max="255"
-                onChange={handleChange}
-                style={superStyle}
-              ></input>
+            <div className="col-md-12 offset-lg-3 col-lg-3">
+              <div className="text-center">
+                <div>
+                  <label className="text-danger" htmlFor="start-r">
+                    Red Start
+                  </label>
+                  <input
+                    type="range"
+                    className="form-range float-end"
+                    id="start-r"
+                    value={color.start.r}
+                    min="0"
+                    max="255"
+                    step="1"
+                    onChange={handleChange}
+                    style={superStyle}
+                  ></input>
+                </div>
+                <div>
+                  <label className="text-success" htmlFor="start-g">
+                    Green Start
+                  </label>
+                  <input
+                    type="range"
+                    className="form-range float-end"
+                    id="start-g"
+                    value={color.start.g}
+                    min="0"
+                    max="255"
+                    onChange={handleChange}
+                    style={superStyle}
+                  ></input>
+                </div>
+                <div>
+                  <label className="text-primary" htmlFor="start-b">
+                    Blue Start
+                  </label>
+                  <input
+                    type="range"
+                    className="form-range float-end"
+                    id="start-b"
+                    value={color.start.b}
+                    min="0"
+                    max="255"
+                    onChange={handleChange}
+                    style={superStyle}
+                  ></input>
+                </div>
+              </div>
             </div>
-            <div className="col-lg-3 text-center">
-              <div className="text-danger">Red End</div>
-              <input
-                type="range"
-                className="form-range float-start"
-                id="end-r"
-                value={color.end.r}
-                min="0"
-                max="255"
-                step="1"
-                onChange={handleChange}
-                style={superStyle}
-              ></input>
-              <div className="text-success">Green End</div>
-              <input
-                type="range"
-                className="form-range float-start"
-                id="end-g"
-                value={color.end.g}
-                min="0"
-                max="255"
-                onChange={handleChange}
-                style={superStyle}
-              ></input>
-              <div className="text-primary">Blue End</div>
-              <input
-                type="range"
-                className="form-range float-start"
-                id="end-b"
-                value={color.end.b}
-                min="0"
-                max="255"
-                onChange={handleChange}
-                style={superStyle}
-              ></input>
+            <div className="col-12 col-lg-3">
+              <div className="text-center">
+                <div>
+                  <label className="text-danger" htmlFor="end-r">
+                    Red End
+                  </label>
+                  <input
+                    type="range"
+                    className="form-range float-start"
+                    id="end-r"
+                    value={color.end.r}
+                    min="0"
+                    max="255"
+                    step="1"
+                    onChange={handleChange}
+                    style={superStyle}
+                  ></input>
+                </div>
+                <div>
+                  <label className="text-success" htmlFor="end-g">
+                    Green End
+                  </label>
+                  <input
+                    type="range"
+                    className="form-range float-start"
+                    id="end-g"
+                    value={color.end.g}
+                    min="0"
+                    max="255"
+                    onChange={handleChange}
+                    style={superStyle}
+                  ></input>
+                </div>
+                <div>
+                  <label className="text-primary" htmlFor="end-b">
+                    Blue End
+                  </label>
+                  <input
+                    type="range"
+                    className="form-range float-start"
+                    id="end-b"
+                    value={color.end.b}
+                    min="0"
+                    max="255"
+                    onChange={handleChange}
+                    style={superStyle}
+                  ></input>
+                </div>
+              </div>
             </div>
           </div>
           <div className="container">
@@ -248,7 +276,13 @@ const Proposition = () => {
                 <button
                   key={el}
                   type="button"
-                  className={`btn btn-sm me-2 mb-2 ${color.tags.includes(el) ? "btn-success" : darkMode ? "btn-light" : "btn-dark text-white"}`}
+                  className={`btn btn-sm me-2 mb-2 ${
+                    color.tags.includes(el)
+                      ? "btn-success"
+                      : darkMode
+                      ? "btn-light"
+                      : "btn-dark text-white"
+                  }`}
                   onClick={handleToggleTags}
                 >
                   {el}
