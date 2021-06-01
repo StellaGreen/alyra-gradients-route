@@ -32,9 +32,64 @@ const Admin = () => {
       });
   }, []);
 
-  const handleButtonClickAdd = () => {};
+  const handleButtonClickAdd = (e) => {
+    const payload = {
+      ...state.gradients.filter((el) => el.id === e.target.id),
+    };
+    const { name, start, end, tags, id } = payload[0];
+    console.log(name, start, end, tags);
+    fetch(`${process.env.REACT_APP_API_URL}/gradients`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: "Bearer 987654321",
+      },
+      body: JSON.stringify({
+        name,
+        start,
+        end,
+        tags,
+      }),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`Something went wrong: ${response.textStatus}`);
+        }
+        return response.json();
+      })
+      .then(() => {
+        fetch(`${process.env.REACT_APP_API_URL}/proposition/${id}`, {
+          method: "DELETE",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer 987654321",
+          },
+        })
+          .then((response) => {
+            if (!response.ok) {
+              throw new Error(`Something went wrong: ${response.textStatus}`);
+            }
+            return response.json();
+          })
+          .then(() => {
+            propositionDispatch({ type: "DELETE", payload: payload[0] });
+          })
+          .catch((error) => {
+            propositionDispatch({
+              type: "FETCH_FAILURE",
+              payload: error.message,
+            });
+          });
+      })
+      .catch((error) => {
+        propositionDispatch({ type: "FETCH_FAILURE", payload: error.message });
+      });
+  };
 
   const handleButtonClickDelete = (event) => {
+    const payload = {
+      ...state.gradients.filter((el) => el.id === event.target.id),
+    };
     console.log(event.target);
     console.log(event.target.id);
     fetch(`${process.env.REACT_APP_API_URL}/proposition/${event.target.id}`, {
@@ -50,14 +105,16 @@ const Admin = () => {
         }
         return response.json();
       })
-      .then(() => {})
+      .then(() => {
+        propositionDispatch({ type: "DELETE", payload: payload[0] });
+      })
       .catch((error) => {
         propositionDispatch({ type: "FETCH_FAILURE", payload: error.message });
       });
   };
 
   return (
-    <div className="container">
+    <div className="container mt-5">
       <ul className="row list-unstyled">
         {state.gradients.map((el) => {
           const { name, start, end, tags, id } = el;
