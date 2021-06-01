@@ -19,3 +19,36 @@ code {
 code {
   color: #3c5179;
 }
+
+input[type="range"]::-webkit-slider-thumb {
+  width: 20px;
+  height: 20px;
+  background: #0abb22;
+}
+
+/*::-moz-range-thumb*/
+/*::-moz-range-progress ;*/
+#panda {
+  background-image: url("./panda_roux.png");
+}
+
+input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  background-color: rgb(66, 2, 214); /* firefox button */
+}
+
+#start-r::-moz-range-progress,
+#end-r::-moz-range-progress {
+  background-color: rgb(199, 0, 0);
+}
+
+#start-g::-moz-range-progress,
+#end-g::-moz-range-progress {
+  background-color: green;
+}
+
+#start-b::-moz-range-progress,
+#end-b::-moz-range-progress {
+  background-color: blue;
+}
