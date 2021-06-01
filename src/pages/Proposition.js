@@ -4,11 +4,33 @@ import { v4 as uuidv4 } from "uuid";
 import ToggleModeButton  from "../components/ToggleModeButton"
 import {Link} from "react-router-dom"
 
+const normTags = [
+  "blanc",
+  "noir",
+  "pourpre",
+  "rouge",
+  "orange",
+  "jaune",
+  "vert",
+  "bleu",
+  "violet",
+  "ivoire",
+  "crème",
+  "beige",
+  "rose",
+  "kaki",
+  "brun",
+  "marron",
+  "bordeaux",
+
+]
+  
 const Proposition = () => {
   const [darkMode, setDarkMode] = useState(true);
   const [color, setColor] = useState({
     start: { r: 0, g: 0, b: 0 },
     end: { r: 0, g: 0, b: 0 },
+    tags:[]
   });
   const [name, setName] = useState("default name");
   const { start, end } = color;
@@ -66,9 +88,23 @@ const Proposition = () => {
   };
   const buttonStyle = {
     backgroundImage: "linear-gradient(to right, rgb(52,106,181), rgb(185,12,46))",
+    position:"relative",
+    top:"0rem",
+    left:"36rem",
     marginTop:"1rem",
     width:"6rem",
-    boxShadow: "0px 0px 10px gray",
+    boxShadow: "0px 0px 10px gray"}
+  const handleToggleTags = (e) => {
+        setColor({
+          ...color,
+          tags:[...color.tags, e.target.textContent]})
+  }
+  const styleTags = {
+    position:"relative",
+    right:"0rem",
+    left:"20rem",
+    top:"2rem",
+    
   }
   return (
     <>
@@ -76,7 +112,7 @@ const Proposition = () => {
       
       <div className={`${modeClasses} min-vh-100`}>
       <Link
-        className="btn text-white position-absolute start-50 nav-link me-2"
+        className="btn text-white nav-link me-2"
         to="/"
         style={buttonStyle}
       >
@@ -194,16 +230,21 @@ const Proposition = () => {
               ></input>
             </div>
           </div>
-          <div>
-            <h3> select tags</h3>
-            <button
+          <div className="container">
+            <h3 className="text-center pt-4"> Select the tags :</h3>
+            <div className="row"></div>
+            <div className="col-md-5 middle text-center" style={styleTags}>
+            {normTags.map(el => <button key = {el}
               type="button"
               className={`btn btn-sm me-2 mb-2 ${
                 darkMode ? "btn-light" : "btn-dark text-white"
               }`}
+              onClick={handleToggleTags}
             >
-              bleu
-            </button>
+             {el}
+            </button>)}
+            </div>
+            
           </div>
           <div className="col-3"></div>
           <button
