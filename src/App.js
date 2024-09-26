@@ -1,52 +1,23 @@
-import Gradients from "./components/Gradients"
-import GradientsHeader from "./components/GradientsHeader"
-import Footer from "./components/Footer"
-import {FilterContextProvider} from "./context/FilterContext"
-import { useEffect } from "react"
+import React from "react";
+import { Switch, Route } from "react-router-dom";
+import Home from "./pages/Home";
+import FullScreen from "./pages/FullScreen";
+import Proposition from "./pages/Proposition";
+import Footer from "./components/Footer";
+import Admin from "./pages/Admin";
 
 function App() {
-
-useEffect(()=>{
-  //login true
-  console.log(`${process.env.REACT_APP_API_URL}/gradients`)
-  fetch(`${process.env.REACT_APP_API_URL}/gradients`)
-  .then(response => {
-    if (!response.ok) {
-      throw new Error(`something wrong with request: ${response.status}`)
-    }
-    return response.json()
-  })
-  .then(data => {
-    // data
-    console.log('data')
-    console.log(data)
-  })
-  .catch(e=> {
-    //error
-    console.log('error')
-    console.log(e.message)
-  })
-  .finally(() =>{
-    console.log('finally')
-    // login false
-  })
-})
-
   return (
     <div className="App min-vh-100 d-flex flex-column">
-      <GradientsHeader>
-        <h1 className="display-1">Alyra Gradients</h1>
-        <p className="tagline">Ultime collection de plus beaux dégradés</p>
-      </GradientsHeader>
-      <main className="container">
-        <h1 className="text-center my-4">Alyra Gradients</h1>
-        <FilterContextProvider>
-          <Gradients />
-        </FilterContextProvider>
-      </main>
+      <Switch>
+        <Route exact path="/" component={Home} />
+        <Route exact path="/gradient/:id" component={FullScreen} />
+        <Route exact path="/proposition" component={Proposition} />
+        <Route exact path="/admin" component={Admin} />
+      </Switch>
       <Footer />
     </div>
-  )
+  );
 }
 
-export default App
+export default App;
